@@ -1,0 +1,36 @@
+@import '../../variables';
+
+.relays {
+  flex-grow: 1;
+  text-align: center;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+
+  button {
+    margin: 1vh;
+
+    &#relayState0, &#relayState1 {
+      margin-top: 5vh;
+    }
+
+    &.enable {
+      &:hover {
+        background-color: $button-active-hoover-background-color;
+      }
+
+      background-color: $button-active-background-color;
+    }
+
+    &.disable {
+      &:hover {
+        background-color: $button-hoover-background-color;
+      }
+
+      background-color: $button-background-color;
+    }
+  }
+
+  h2 {
+    margin: 2rem;
+  }
+}

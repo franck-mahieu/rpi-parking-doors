@@ -1,0 +1,152 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddUserModal render renders correctly 1`] = `
+<span
+  id="user-modal"
+>
+  <button
+    className="waves-effect waves-light btn modal-trigger add-user-button"
+    data-target="add-user-modal"
+    title="Ajouter un utilisateur"
+  >
+    Ajouter un utilisateur
+  </button>
+  <div
+    className="modal"
+    id="add-user-modal"
+  >
+    <div
+      className="modal-content"
+    >
+      <h4>
+        Ajouter un utilisateur
+      </h4>
+      <div
+        className="row"
+      >
+        <div
+          className="input-field col s12"
+        >
+          <input
+            className="validate"
+            id="login"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+          <label
+            htmlFor="login"
+          >
+            Identifiant
+          </label>
+        </div>
+      </div>
+      <div
+        className="row"
+      >
+        <div
+          className="input-field col s12"
+        >
+          <input
+            autoComplete="password"
+            className="validate"
+            id="password"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+          <label>
+            Mot de passe
+          </label>
+        </div>
+      </div>
+      <div
+        className="row"
+      >
+        <div
+          className="input-field col s12"
+        >
+          <select
+            id="roles"
+            onChange={[Function]}
+          >
+            <option
+              disabled={true}
+              value=""
+            >
+              Choose the roles
+            </option>
+            <option
+              value="user"
+            >
+              user
+            </option>
+            <option
+              value="user admin"
+            >
+              admin
+            </option>
+          </select>
+          <label>
+            Rôles
+          </label>
+        </div>
+      </div>
+      <div
+        className="row"
+      >
+        <div
+          className="input-field col s12"
+        >
+          <input
+            className="validate"
+            id="email"
+            onChange={[Function]}
+            type="email"
+            value=""
+          />
+          <label
+            htmlFor="email"
+          >
+            Email
+          </label>
+        </div>
+      </div>
+      <div
+        className="row"
+      >
+        <div
+          className="input-field col s12"
+        >
+          <input
+            className="datepicker"
+            id="expiration"
+            type="text"
+          />
+          <label
+            htmlFor="expiration"
+          >
+            Expiration
+          </label>
+        </div>
+      </div>
+    </div>
+    <div
+      className="modal-footer"
+    >
+      <button
+        className="modal-close waves-effect waves-red btn-flat cancel-button"
+      >
+        Annuler
+      </button>
+      <button
+        className="modal-close waves-effect waves-green btn-flat"
+        id="add-user-validate-button"
+        onClick={[Function]}
+      >
+        Valider
+      </button>
+    </div>
+  </div>
+</span>
+`;

@@ -1,0 +1,8 @@
+[
+  {
+    "login": "admin",
+    "roles": "user admin",
+    "email": "admin@mail.com",
+    "expiration": null
+  }
+]

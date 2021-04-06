@@ -1,0 +1,19 @@
+@import '../../variables';
+
+footer {
+  background-color: $header-footer-background-color;
+  text-align: center;
+  padding: 1rem;
+  bottom: 0;
+}
+
+
+#root {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
