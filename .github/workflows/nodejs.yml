@@ -1,0 +1,24 @@
+name: rpi-parking-doors-CI
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14.x"
+      - name: Setup full icu to manage all timezones
+        uses: sarisia/setup-icu@v1
+      - run: npm run ci
+      - run: npm run build
+      - run: npm run test:cov
+      - run: npm run test:e2e
+

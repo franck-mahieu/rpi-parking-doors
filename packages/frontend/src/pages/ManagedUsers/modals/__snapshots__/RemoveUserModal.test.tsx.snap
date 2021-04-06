@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RemoveUserModal render renders correctly 1`] = `
+<span
+  id="user-modal"
+>
+  <button
+    className="waves-effect waves-light btn modal-trigger user-modal remove-button"
+    data-target="remove-user-modal-login"
+    title="Suppression de l'utilisateur"
+  >
+    Supprimer
+  </button>
+  <div
+    className="modal"
+    id="remove-user-modal-login"
+  >
+    <div
+      className="modal-content"
+    >
+      <h4>
+        Suppression de l'utilisateur
+         
+        login
+      </h4>
+      <p>
+        Voulez vous vraiment supprimer l'utilisateur
+         
+        login
+         ?
+      </p>
+    </div>
+    <div
+      className="modal-footer"
+    >
+      <button
+        className="modal-close waves-effect waves-red btn-flat cancel-button"
+      >
+        Annuler
+      </button>
+      <button
+        className="modal-close waves-effect waves-green btn-flat"
+        id="remove-user-validate-button"
+        onClick={[Function]}
+      >
+        Valider
+      </button>
+    </div>
+  </div>
+</span>
+`;

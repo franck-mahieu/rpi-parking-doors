@@ -1,0 +1,26 @@
+@import "../../variables";
+
+.managed-users {
+  padding: 2rem 10rem 2rem 10rem;
+
+  &#user-modal > button {
+    background-color: $button-background-color;
+    margin: 0 0.15rem 0 0.15rem;
+
+    &:hover, &:active, &:focus {
+      background-color: $button-hoover-background-color;
+    }
+  }
+
+  .highlight-expired-user {
+    color: red;
+  }
+
+  @media (max-width: $responsive-max-width) {
+    padding: 0;
+    & th, tr, td {
+      padding-left: 0;
+      padding-right: 0.1rem;
+    }
+  }
+}

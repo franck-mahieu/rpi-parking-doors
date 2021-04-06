@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Relays.tsx Relays should render component correctly 1`] = `
+<div
+  className="relays"
+>
+  <h4>
+    Ouverture des portes
+  </h4>
+  <button
+    className="waves-effect waves-light btn btn-large disable"
+    id="relayState0"
+    onClick={[Function]}
+  >
+    Porte R+1
+  </button>
+  <br />
+  <button
+    className="waves-effect waves-light btn btn-large disable "
+    id="relayState1"
+    onClick={[Function]}
+  >
+    Porte du rez de chaussée
+  </button>
+</div>
+`;

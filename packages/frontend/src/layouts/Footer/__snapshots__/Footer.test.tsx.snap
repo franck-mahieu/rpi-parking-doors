@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer.tsx Footer should renders correctly 1`] = `
+<div
+  className="container grey-text"
+>
+  Made with ♥ by
+  <a
+    href="https://twitter.com/Franck_Mahieu"
+  >
+     Franck Mahieu
+  </a>
+</div>
+`;

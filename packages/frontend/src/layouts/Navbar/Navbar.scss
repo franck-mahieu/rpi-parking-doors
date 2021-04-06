@@ -1,0 +1,18 @@
+@import '../../variables';
+
+.nav-wrapper {
+  background-color: $header-footer-background-color;
+  padding: 0;
+}
+
+.brand-logo.center, .github-logo {
+  @media (max-width: $responsive-max-width) {
+    display: none;
+  }
+}
+
+.github-logo {
+  vertical-align: middle;
+  margin: 1rem;
+}
+

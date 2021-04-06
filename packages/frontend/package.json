@@ -1,0 +1,80 @@
+{
+  "name": "rpi-parking-doors-frontend",
+  "version": "1.0.0",
+  "private": false,
+  "scripts": {
+    "start:dev": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --watchAll=false",
+    "test:watch": "react-scripts test",
+    "test:cov": "react-scripts test --watchAll=false --coverage",
+    "test:e2e": "wait-on http://localhost:8888 && cross-env ELECTRON_ENABLE_LOGGING=1 ./node_modules/.bin/cypress run --env ENABLE_SCREENSHOT_VERIFICATION=false",
+    "test:e2e-dev": "wait-on http://localhost:8889 && ELECTRON_ENABLE_LOGGING=1 ./node_modules/.bin/cypress run --env FRONT_PORT=8889",
+    "test:cypress-open": "wait-on http://localhost:8889 && ./node_modules/.bin/cypress open --env FRONT_PORT=8889",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "dependencies": {
+    "materialize-css": "^1.0.0",
+    "node-sass": "^4.14.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.3"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "@types/jest": "^24.9.1",
+    "@types/materialize-css": "^1.0.8",
+    "@types/node": "^12.20.7",
+    "@types/react": "^16.9.52",
+    "@types/react-dom": "^16.9.12",
+    "@types/react-router-dom": "^5.1.6",
+    "@types/react-test-renderer": "^17.0.1",
+    "cross-env": "^7.0.3",
+    "cypress": "^6.9.1",
+    "cypress-plugin-snapshots": "^1.4.4",
+    "eslint": "^7.23.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.20.1",
+    "jest-specific-snapshot": "^4.0.0",
+    "prettier": "^1.19.1",
+    "react-test-renderer": "^17.0.2",
+    "typescript": "^3.7.5",
+    "wait-on": "^5.3.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    },
+    "collectCoverageFrom": [
+      "src/**/*.ts",
+      "src/**/*.tsx",
+      "!src/index.tsx",
+      "!src/serviceWorker.ts",
+      "!src/react-app-env.d.ts"
+    ]
+  }
+}

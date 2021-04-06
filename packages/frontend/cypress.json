@@ -1,0 +1,41 @@
+{
+  "viewportWidth": 1280,
+  "viewportHeight": 720,
+  "ignoreTestFiles": [
+    "**/__snapshots__/*",
+    "**/__image_snapshots__/*"
+  ],
+  "video": false,
+  "env": {
+    "API_PORT": 8888,
+    "FRONT_PORT": 8888,
+    "ENABLE_SCREENSHOT_VERIFICATION": true,
+    "cypress-plugin-snapshots": {
+      "autoCleanUp": false,
+      "autopassNewSnapshots": true,
+      "diffLines": 3,
+      "excludeFields": [],
+      "ignoreExtraArrayItems": false,
+      "ignoreExtraFields": false,
+      "normalizeJson": true,
+      "prettier": true,
+      "imageConfig": {
+        "createDiffImage": true,
+        "resizeDevicePixelRatio": true,
+        "threshold": 1,
+        "thresholdType": "pixel"
+      },
+      "screenshotConfig": {
+        "blackout": [],
+        "capture": "fullPage",
+        "clip": null,
+        "disableTimersAndAnimations": true,
+        "log": false,
+        "scale": false,
+        "timeout": 5000
+      },
+      "updateSnapshots": false,
+      "backgroundBlend": "difference"
+    }
+  }
+}

@@ -1,0 +1,59 @@
+@import "./src/variables";
+
+#user-modal {
+  & .active, li > span {
+    color: black;
+  }
+
+  & input:focus {
+    box-shadow: 0 0 0 0;
+    border-bottom: 1px solid black;
+  }
+
+  & .remove-button, .update-password-button, .cancel-button, .modal-footer button, .add-user-button {
+    margin-right: 1rem;
+    background-color: $button-background-color;
+    color: white;
+
+    &:hover {
+      background-color: $button-hoover-background-color;
+    }
+
+    @media (max-width: $responsive-max-width) {
+      font-size: x-small;
+      font-weight: 500;
+    }
+  }
+
+  & .remove-button, .update-password-button {
+    margin-top: 0.2rem;
+
+    @media (max-width: $responsive-max-width) {
+      padding: 0;
+      margin: 0.1rem;
+      width: 6rem;
+    }
+
+    @media (max-width: 400px) {
+      width: 5rem;
+    }
+  }
+
+  & .datepicker-date-display {
+    background-color: $datapicker-color;
+  }
+
+  & .datepicker-cancel, .datepicker-clear, .datepicker-today, .datepicker-done {
+    color: black;
+  }
+
+  & .datepicker-table {
+    & td.is-selected {
+      background-color: $datapicker-color;
+    }
+
+    & td.is-today {
+      color: $datapicker-color;
+    }
+  }
+}

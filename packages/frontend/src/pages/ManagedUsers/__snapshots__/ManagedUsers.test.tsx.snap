@@ -1,0 +1,307 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ManagedUsers.tsx ManagedUsers should renders correctly when fetchUtils return correct user 1`] = `
+<div
+  className="managed-users"
+>
+  <table
+    className="centered striped highlight"
+  >
+    <thead>
+      <tr>
+        <th>
+          Identifiant
+        </th>
+        <th>
+          Rôles
+        </th>
+        <th>
+          Email
+        </th>
+        <th>
+          Expiration
+        </th>
+        <th>
+          Actions
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          login
+        </td>
+        <td>
+          roles
+        </td>
+        <td>
+          email
+        </td>
+        <td
+          className="highlight-expired-user"
+        >
+          05/03/2021
+        </td>
+        <td>
+          <span
+            id="user-modal"
+          >
+            <button
+              className="waves-effect waves-light btn modal-trigger user-modal remove-button"
+              data-target="remove-user-modal-login"
+              title="Suppression de l'utilisateur"
+            >
+              Supprimer
+            </button>
+            <div
+              className="modal"
+              id="remove-user-modal-login"
+            >
+              <div
+                className="modal-content"
+              >
+                <h4>
+                  Suppression de l'utilisateur
+                   
+                  login
+                </h4>
+                <p>
+                  Voulez vous vraiment supprimer l'utilisateur
+                   
+                  login
+                   ?
+                </p>
+              </div>
+              <div
+                className="modal-footer"
+              >
+                <button
+                  className="modal-close waves-effect waves-red btn-flat cancel-button"
+                >
+                  Annuler
+                </button>
+                <button
+                  className="modal-close waves-effect waves-green btn-flat"
+                  id="remove-user-validate-button"
+                  onClick={[Function]}
+                >
+                  Valider
+                </button>
+              </div>
+            </div>
+          </span>
+          <span
+            id="user-modal"
+          >
+            <button
+              className="waves-effect waves-light btn modal-trigger update-password-button"
+              data-target="update-user-password-modal-login"
+              title="Mise à jour du mot de passe"
+            >
+              Mise à jour du mot de passe
+            </button>
+            <div
+              className="modal"
+              id="update-user-password-modal-login"
+            >
+              <div
+                className="modal-content"
+              >
+                <h4>
+                  Mise à jour du mot de passe de
+                   
+                  login
+                </h4>
+                <div
+                  className="row"
+                >
+                  <div
+                    className="input-field col s12"
+                  >
+                    <input
+                      className="validate"
+                      id="update-password-login"
+                      onChange={[Function]}
+                      type="text"
+                      value=""
+                    />
+                    <label
+                      htmlFor="password"
+                    >
+                      Mot de passe
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="modal-footer"
+              >
+                <button
+                  className="modal-close waves-effect waves-red btn-flat cancel-button"
+                >
+                  Annuler
+                </button>
+                <button
+                  className="modal-close waves-effect waves-green btn-flat"
+                  id="update-password-validate-button"
+                  onClick={[Function]}
+                >
+                  Valider
+                </button>
+              </div>
+            </div>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <span
+    id="user-modal"
+  >
+    <button
+      className="waves-effect waves-light btn modal-trigger add-user-button"
+      data-target="add-user-modal"
+      title="Ajouter un utilisateur"
+    >
+      Ajouter un utilisateur
+    </button>
+    <div
+      className="modal"
+      id="add-user-modal"
+    >
+      <div
+        className="modal-content"
+      >
+        <h4>
+          Ajouter un utilisateur
+        </h4>
+        <div
+          className="row"
+        >
+          <div
+            className="input-field col s12"
+          >
+            <input
+              className="validate"
+              id="login"
+              onChange={[Function]}
+              type="text"
+              value=""
+            />
+            <label
+              htmlFor="login"
+            >
+              Identifiant
+            </label>
+          </div>
+        </div>
+        <div
+          className="row"
+        >
+          <div
+            className="input-field col s12"
+          >
+            <input
+              autoComplete="password"
+              className="validate"
+              id="password"
+              onChange={[Function]}
+              type="text"
+              value=""
+            />
+            <label>
+              Mot de passe
+            </label>
+          </div>
+        </div>
+        <div
+          className="row"
+        >
+          <div
+            className="input-field col s12"
+          >
+            <select
+              id="roles"
+              onChange={[Function]}
+            >
+              <option
+                disabled={true}
+                value=""
+              >
+                Choose the roles
+              </option>
+              <option
+                value="user"
+              >
+                user
+              </option>
+              <option
+                value="user admin"
+              >
+                admin
+              </option>
+            </select>
+            <label>
+              Rôles
+            </label>
+          </div>
+        </div>
+        <div
+          className="row"
+        >
+          <div
+            className="input-field col s12"
+          >
+            <input
+              className="validate"
+              id="email"
+              onChange={[Function]}
+              type="email"
+              value=""
+            />
+            <label
+              htmlFor="email"
+            >
+              Email
+            </label>
+          </div>
+        </div>
+        <div
+          className="row"
+        >
+          <div
+            className="input-field col s12"
+          >
+            <input
+              className="datepicker"
+              id="expiration"
+              type="text"
+            />
+            <label
+              htmlFor="expiration"
+            >
+              Expiration
+            </label>
+          </div>
+        </div>
+      </div>
+      <div
+        className="modal-footer"
+      >
+        <button
+          className="modal-close waves-effect waves-red btn-flat cancel-button"
+        >
+          Annuler
+        </button>
+        <button
+          className="modal-close waves-effect waves-green btn-flat"
+          id="add-user-validate-button"
+          onClick={[Function]}
+        >
+          Valider
+        </button>
+      </div>
+    </div>
+  </span>
+</div>
+`;
