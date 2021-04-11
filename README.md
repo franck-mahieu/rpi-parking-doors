@@ -40,36 +40,62 @@ button is just a switch, we can reproduce it by connecting a relay on both sides
 
 # How to use
 
-Clone this repository on your raspberry pi, install NodeJS 12 or higher on it, in the backend and frontend folder, edit
-the `.env` file to customize your configuration (relays, port, label, title) if needed, and launch this command in root
-folder
+## Generate application
+
+- Clone this repository on your desktop
+- Edit the `.env` files to customize your configuration (relays, port, label, title) if needed
+- Launch this commands to install dependencies and build the application :
 
 ```
-npm install && npm run build && npm run start:prod
+npm install && npm run build
 ```
 
-Now the dependencies have been installed, the front and back projects have been built, and the project has been launched
-in production mode (based on the optimised production files).
+Now, you have in `packages/backend/dist` folder the frontend and backend optimized generates files.
+
+## Install and launch application on Raspberry
+
+- On the Raspberry, install NodeJS 12 or higher
+- Copy generate `dist` folder on your Raspberry
+- In Raspberry terminal, in `dist` folder, launch this command to install only production dependencies :
+
+```
+npm install --only=production
+```
+
+- Start the application with this command in `dist` folder
+
+```
+SQLITE_DATABASE_PATH=./data/sqlite.db node ./backend/src/main
+```
+
+So now, your application is started.
+
+Note 1 : i advice to you to move the sqlite.sb database in ramdisk (like describe [here](#set-database-in-memory)), to
+save your sd card, and just start the application with this command on `dist` folder :
+
+```
+SQLITE_DATABASE_PATH=./PATH/TO/DATABASE/sqlite.db node ./backend/src/main
+```
+
+Note 2 : Good to know, the frontend files are served by the backend application
 
 # Configurations (not mandatory)
 
 Edit backend `.env` file to customize the configuration
 
-|                 Value                 |                 Descriptions                 |
-| :-----------------------------------: | :------------------------------------------: |
-|               PORT=8888               |    Port used by the backend in production    |
-|              STATE_ON=0               | Configure the default opened state for relay |
-|              STATE_OFF=1              | Configure the default closes state for relay |
-|             RELAYS=20,21              | Configure the relays pin plugged on the rpi  |
-| SQLITE_DATABASE_PATH=./data/sqlite.db |  Configure the path to the sqlite database   |
+|                 Value                 |                                                       Descriptions                                                       |
+| :-----------------------------------: | :----------------------------------------------------------------------------------------------------------------------: |
+|               PORT=8888               |                                          Port used by the backend in production                                          |
+|              STATE_ON=0               |                                       Configure the default opened state for relay                                       |
+|              STATE_OFF=1              |                                       Configure the default closes state for relay                                       |
+|             RELAYS=20,21              |                                       Configure the relays pin plugged on the rpi                                        |
+| SQLITE_DATABASE_PATH=./data/sqlite.db | Configure the path to the sqlite database, if an SQLITE_DATABASE_PATH env var is specified, this config will be override |
 
 Edit front `.env` file to customize the configuration
 
-|                    Value                    |                                        Descriptions                                        |
-| :-----------------------------------------: | :----------------------------------------------------------------------------------------: |
-|                  PORT=3001                  |                     Port on which the frontend is launched in dev mode                     |
-| REACT_APP_DEV_API_URL=http://localhost:8888 | API url, usefull only in developpement, in production, the url is the same as the frontend |
-|           Other titles and labels           |                       Usefull to change language, or customize names                       |
+|              Value               |                              Descriptions                               |
+| :------------------------------: | :---------------------------------------------------------------------: |
+| Titles and labels configurations | Usefull to change language, or customize label, description in frontend |
 
 # How is made
 
@@ -105,7 +131,7 @@ Note, The [onoff](https://github.com/fivdi/onoff) library is mocked on your loca
 
 ### Swagger
 
-You can launch application in dev mode, et simply go to http://localhost:8888/swagger/ to see API documentation
+You can launch backend application in dev mode, et simply go to http://localhost:8888/swagger/ to see API documentation
 ![image](documentations/swagger.png)
 
 ## Tests
@@ -131,11 +157,11 @@ My IP is not static, so I use the free [no-ip](https://www.noip.com/) service (w
 prove that the domain is still in use), which I have configured with my router to give me a static domain for my not
 static ip.
 
-## Set application in memory
+## Set database in memory
 
-I advise you to place the application (particulary the sqlite database `packages/backend/data/sqlite.db`) in memory and
-regularly save it in the file system, in order to preserve the longevity of the SD card. To do it, we can
-use [log2ram](https://github.com/azlux/log2ram).
+I advise you to place sqlite database `backend/data/sqlite.db` in memory and regularly save it in the file system, in
+order to preserve the longevity of the SD card. To do it, we can simply launch one script at Raspberry startup to copy
+data base in ramdisk, then launch every day a second script to copy the database on ramdisk, on filesystem.
 
 ## SystemD
 

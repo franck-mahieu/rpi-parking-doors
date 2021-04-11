@@ -10,7 +10,7 @@ const config = new ConfigService();
 const PORT = config.get('PORT') ? config.get('PORT') : 3000;
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule, { cors: false });
+  const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api');
 
   if ((process.env.NODE_ENV = 'development')) {
@@ -22,6 +22,13 @@ async function bootstrap() {
       .build();
     const document = SwaggerModule.createDocument(app, config);
     SwaggerModule.setup('swagger', app, document);
+
+    app.enableCors({
+      origin: 'http://localhost:8889',
+      credentials: true,
+    });
+  } else {
+    app.enableCors();
   }
 
   app.use(
@@ -33,18 +40,9 @@ async function bootstrap() {
   app.use(
     rateLimit({
       windowMs: 15 * 60 * 1000, // 15 minutes
-      max: 1000, // limit each IP to 100 requests per windowMs
+      max: 1000, // limit each IP to 1000 requests per windowMs
     }),
   );
-
-  if (process.env.NODE_ENV === 'development') {
-    app.enableCors({
-      origin: 'http://localhost:8889',
-      credentials: true,
-    });
-  } else {
-    app.enableCors();
-  }
 
   app.enableShutdownHooks();
   await app.listen(PORT);
