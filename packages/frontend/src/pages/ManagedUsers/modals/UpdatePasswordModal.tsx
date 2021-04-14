@@ -10,7 +10,7 @@ const {
   REACT_APP_UPDATE_PASSWORD_ERROR_MESSAGE,
   REACT_APP_LABEL_BUTTON_CANCEL,
   REACT_APP_LABEL_BUTTON_VALIDATE,
-  REACT_APP_LABEL_PASSORD,
+  REACT_APP_LABEL_PASSWORD,
   REACT_APP_LABEL_UPDATE_PASSWORD_BUTTON,
 } = process.env;
 
@@ -112,7 +112,9 @@ class UpdatePasswordModal extends Component<IUpdatePasswordModal> {
                   value={this.state.password}
                   onChange={this.onChangePasswordHandler}
                 />
-                <label htmlFor="password">{REACT_APP_LABEL_PASSORD}</label>
+                <label htmlFor={`update-password-${this.props.login}`}>
+                  {REACT_APP_LABEL_PASSWORD}
+                </label>
               </div>
             </div>
           </div>
