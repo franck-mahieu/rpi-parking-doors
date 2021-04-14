@@ -1,23 +1,26 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, OnApplicationShutdown } from '@nestjs/common';
 import * as onoff from 'onoff';
 
 const { Gpio } = onoff;
 import { ConfigService } from '../common/config/config.service';
 
 @Injectable()
-export class RelaysService {
+export class RelaysService implements OnApplicationShutdown {
   relays;
   virtualValue;
+  private readonly stateOn = parseInt(this.config.get('STATE_ON'));
+  private readonly stateOff = parseInt(this.config.get('STATE_OFF'));
 
   constructor(private readonly config: ConfigService) {
     this.setRelayValue(Gpio.accessible);
+    this.allRelaysOff();
   }
 
   activateRelayForSeconds(relayNumber: number, seconds: number): boolean {
     try {
-      this.relays[relayNumber].writeSync(this.config.get('STATE_ON'));
+      this.relays[relayNumber].writeSync(this.stateOn);
       setTimeout(() => {
-        this.relays[relayNumber].writeSync(this.config.get('STATE_OFF'));
+        this.relays[relayNumber].writeSync(this.stateOff);
       }, seconds * 1000);
       return true;
     } catch (e) {
@@ -26,15 +29,12 @@ export class RelaysService {
   }
 
   getRelayState(relayNumber: number): boolean {
-    if (
+    return (
       this.relays &&
       this.relays[relayNumber] &&
       this.relays[relayNumber].readSync &&
-      this.relays[relayNumber].readSync() === this.config.get('STATE_ON')
-    ) {
-      return true;
-    }
-    return false;
+      this.relays[relayNumber].readSync() === this.stateOn
+    );
   }
 
   setRelayValue(gpioAccessible: boolean) {
@@ -57,5 +57,22 @@ export class RelaysService {
         },
       }));
     }
+  }
+
+  allRelaysOff() {
+    if (this.relays) {
+      this.relays.forEach(relay => relay.writeSync(this.stateOff));
+    }
+  }
+
+  allRelaysUnexport() {
+    if (this.relays) {
+      this.relays.forEach(relay => relay.unexport());
+    }
+  }
+
+  onApplicationShutdown() {
+    console.info('All relays will be unexport');
+    this.allRelaysUnexport();
   }
 }
