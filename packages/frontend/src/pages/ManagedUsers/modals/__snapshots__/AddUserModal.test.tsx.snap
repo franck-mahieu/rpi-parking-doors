@@ -48,14 +48,15 @@ exports[`AddUserModal render renders correctly 1`] = `
           className="input-field col s12"
         >
           <input
-            autoComplete="password"
             className="validate"
             id="password"
             onChange={[Function]}
             type="text"
             value=""
           />
-          <label>
+          <label
+            htmlFor="password"
+          >
             Mot de passe
           </label>
         </div>

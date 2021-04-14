@@ -75,14 +75,15 @@ exports[`ManagedUsers.tsx ManagedUsers should renders correctly when fetchUtils 
             className="input-field col s12"
           >
             <input
-              autoComplete="password"
               className="validate"
               id="password"
               onChange={[Function]}
               type="text"
               value=""
             />
-            <label>
+            <label
+              htmlFor="password"
+            >
               Mot de passe
             </label>
           </div>
