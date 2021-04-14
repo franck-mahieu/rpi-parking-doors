@@ -8,8 +8,8 @@ import { ConfigService } from '../common/config/config.service';
 export class RelaysService implements OnApplicationShutdown {
   relays;
   virtualValue;
-  private readonly stateOn = parseInt(this.config.get('STATE_ON'));
-  private readonly stateOff = parseInt(this.config.get('STATE_OFF'));
+  stateOn = parseInt(this.config.get('STATE_ON'));
+  stateOff = parseInt(this.config.get('STATE_OFF'));
 
   constructor(private readonly config: ConfigService) {
     this.setRelayValue(Gpio.accessible);
@@ -29,12 +29,15 @@ export class RelaysService implements OnApplicationShutdown {
   }
 
   getRelayState(relayNumber: number): boolean {
-    return (
+    if (
       this.relays &&
       this.relays[relayNumber] &&
       this.relays[relayNumber].readSync &&
       this.relays[relayNumber].readSync() === this.stateOn
-    );
+    ) {
+      return true;
+    }
+    return false;
   }
 
   setRelayValue(gpioAccessible: boolean) {
