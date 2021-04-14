@@ -131,7 +131,8 @@ Note, The [onoff](https://github.com/fivdi/onoff) library is mocked on your loca
 
 ### Swagger
 
-You can launch backend application in dev mode, et simply go to http://localhost:8888/swagger/ to see API documentation
+You can launch backend application in dev mode, et simply go to http://localhost:8888/swagger/ to see the API
+documentation
 ![image](documentations/swagger.png)
 
 ## Tests
@@ -140,10 +141,10 @@ You can launch tests of frontend and backend with this commands at the root fold
 
 ```
 # unit tests with coverage
-$ npm run test:cov
+npm run test:cov
 
-# e2e tests
-$ npm run test:e2e
+# e2e tests (launch cypress for the front in headless)
+npm run test:e2e
 ```
 
 # Advices
@@ -161,12 +162,52 @@ static ip.
 
 I advise you to place sqlite database `backend/data/sqlite.db` in memory and regularly save it in the file system, in
 order to preserve the longevity of the SD card. To do it, we can simply launch one script at Raspberry startup to copy
-data base in ramdisk, then launch every day a second script to copy the database on ramdisk, on filesystem.
+data base into the ramdisk, then launch every day a second script to copy the database from ramdisk to filesystem.
+
+To achieve that, we should :
+
+- Create a ramdisk at each Raspberry start, by editing the file `/etc/fstab` (with `vim /etc/fstab` command for example)
+  and add this line to the end :
+  ```
+  tmpfs /mnt/ramdisk tmpfs nodev,nosuid,size=200M 0 0
+  ```
+  This will create at each startup a ramdisk of max 200M (you can see your available ram with this command `free -h`)
+
+
+- Set this cron tasks, (launch this command to edit crontab : `crontab -e`)
+  and add this 2 lines at the end of the file :
+  ```shell
+  @reboot sh /home/pi/rpi-parking-doors/packages/backend/scripts/add-database-file-in-ramdisk.sh
+  @midnight sh /home/pi/rpi-parking-doors/packages/backend/scripts/save-database-from-ramdisk-in-fs.sh
+  ```
+
+  The first line add the database in ramdisk at Raspberry startup, and the second save the database from ramdisk every
+  night to filesystem
 
 ## SystemD
 
 I advise to you to create a service for your application and launch it
-with [systemctl](https://wiki.archlinux.org/index.php/systemd) to automaticly restart it if an error occured
+with [systemctl](https://wiki.archlinux.org/index.php/systemd), like describe
+[here](https://www.shubhamdipt.com/blog/how-to-create-a-systemd-service-in-linux/) to automaticly restart the
+application if an error or crash occured
+
+For example this is my service configuration :
+
+```shell
+[Unit]
+Description=rpi parking doors
+After=network.target
+
+[Service]
+Type=simple
+User=pi
+ExecStart=/home/pi/.nvm/versions/node/v14.16.1/bin/node /home/pi/rpi-parking-doors/packages/backend/src/main
+Environment="SQLITE_DATABASE_PATH=/mnt/ramdisk/sqlite.db"
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+```
 
 # Possible improvements
 
