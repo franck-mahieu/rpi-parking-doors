@@ -16,7 +16,7 @@ import { UsersModule } from './users/users.module';
     UsersModule,
     SqliteModule,
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', '../frontend/build/'),
+      rootPath: join(__dirname, '../../frontend/build/'),
       exclude: ['/api*'],
     }),
   ],

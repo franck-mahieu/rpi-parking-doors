@@ -7,7 +7,7 @@ import './Modals.scss';
 const {
   REACT_APP_LABEL_ADD_USER_BUTTON,
   REACT_APP_LABEL_LOGIN,
-  REACT_APP_LABEL_PASSORD,
+  REACT_APP_LABEL_PASSWORD,
   REACT_APP_LABEL_ROLES,
   REACT_APP_ADD_USER_SUCCESS_MESSAGE,
   REACT_APP_ADD_USER_ERROR_MESSAGE,
@@ -147,12 +147,11 @@ class AddUserModal extends Component<IAddUserModal> {
                 <input
                   id="password"
                   type="text"
-                  autoComplete={'password'}
                   className="validate"
                   value={this.state.password}
                   onChange={this.onChangeHandler}
                 />
-                <label>{REACT_APP_LABEL_PASSORD}</label>
+                <label htmlFor="password">{REACT_APP_LABEL_PASSWORD}</label>
               </div>
             </div>
             <div className="row">
