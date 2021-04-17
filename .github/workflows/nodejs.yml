@@ -22,9 +22,9 @@ jobs:
       - name: Setup full icu to manage all timezones
         uses: sarisia/setup-icu@v1
       - run: npm run ci
-      - run: npm run build
+#      - run: npm run build
       - run: npm run test:cov
-      - run: npm run test:e2e
+      #      - run: npm run test:e2e
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
         env:
