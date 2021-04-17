@@ -36,7 +36,9 @@ Array [
             className="active"
           >
             <a
+              className="nav-link"
               href="/?guid="
+              onClick={[Function]}
             >
               Commande des portes
             </a>

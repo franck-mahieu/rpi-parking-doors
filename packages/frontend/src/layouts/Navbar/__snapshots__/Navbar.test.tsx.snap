@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Navbar.tsx Navbar should renders correctly when fetchUtils return admin roles guid 1`] = `
+exports[`Navbar.tsx Navbar should renders correctly when fetchUtils return admin roles and guid 1`] = `
 <nav>
   <div
     className="nav-wrapper"
@@ -34,18 +34,11 @@ exports[`Navbar.tsx Navbar should renders correctly when fetchUtils return admin
         className="active"
       >
         <a
-          href="/?guid=guid"
+          className="nav-link"
+          href="/?guid=null"
+          onClick={[Function]}
         >
           Commande des portes
-        </a>
-      </li>
-      <li
-        className=""
-      >
-        <a
-          href="/admin/manageusers?guid=guid"
-        >
-          Gérer les utilisateurs
         </a>
       </li>
     </ul>
@@ -87,7 +80,9 @@ exports[`Navbar.tsx Navbar should renders correctly when fetchUtils return corre
         className="active"
       >
         <a
-          href="/?guid=guid"
+          className="nav-link"
+          href="/?guid=null"
+          onClick={[Function]}
         >
           Commande des portes
         </a>
@@ -131,7 +126,9 @@ exports[`Navbar.tsx Navbar should renders correctly when fetchUtils return empty
         className="active"
       >
         <a
-          href="/?guid=guid"
+          className="nav-link"
+          href="/?guid=null"
+          onClick={[Function]}
         >
           Commande des portes
         </a>

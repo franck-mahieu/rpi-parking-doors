@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory, useLocation } from 'react-router';
+import { Link } from 'react-router-dom';
 import './Navbar.scss';
 import { fetchUtils } from '../../shared/utils';
 
@@ -10,11 +11,20 @@ const {
 
 interface INavbar {
   setGuid: (guid: string) => void;
-  guid: string;
+  guid: string | null;
+  setUserRoles: (guid: string) => void;
+  userRoles: string | null;
 }
 
-export const Navbar = ({ setGuid, guid }: INavbar) => {
-  const [userRoles, setUserRoles] = React.useState('');
+export const isActive = (pathName: string): string => {
+  return window.location.pathname === pathName ? 'active' : '';
+};
+
+export const shouldShow = (requiredRole: string, userRoles: string | null) => {
+  return userRoles?.includes(requiredRole);
+};
+
+export const Navbar = ({ setGuid, guid, setUserRoles, userRoles }: INavbar) => {
   const history = useHistory();
   const location = useLocation();
 
@@ -41,13 +51,6 @@ export const Navbar = ({ setGuid, guid }: INavbar) => {
     }
   });
 
-  const isActive = (pathName: string): string =>
-    window.location.pathname === pathName ? 'active' : '';
-
-  const shouldShow = (requiredRole: string) => {
-    return userRoles?.includes(requiredRole);
-  };
-
   return (
     <nav>
       <div className="nav-wrapper">
@@ -71,15 +74,15 @@ export const Navbar = ({ setGuid, guid }: INavbar) => {
 
         <ul className="left">
           <li className={isActive('/')}>
-            <a href={`/?guid=${guid}`}>
+            <Link to={`/?guid=${guid}`} className="nav-link">
               {REACT_APP_LABEL_NAVBAR_COMMAND_DOORS}
-            </a>
+            </Link>
           </li>
-          {shouldShow('admin') && (
+          {shouldShow('admin', userRoles) && (
             <li className={isActive('/admin/manageusers')}>
-              <a href={`/admin/manageusers?guid=${guid}`}>
+              <Link to={`/admin/manageusers?guid=${guid}`} className="nav-link">
                 {REACT_APP_LABEL_NAVBAR_USER_MANAGEMENT}
-              </a>
+              </Link>
             </li>
           )}
         </ul>
