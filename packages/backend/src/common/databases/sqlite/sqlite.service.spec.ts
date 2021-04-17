@@ -136,13 +136,13 @@ describe('SqliteService', () => {
 
   describe('onApplicationShutdown', () => {
     it('should call close when db exist', async () => {
-      await sqliteService.onApplicationShutdown();
+      sqliteService.onApplicationShutdown();
       expect(closeMock).toHaveBeenCalledTimes(1);
     });
 
     it('should not call close when db not exist', async () => {
       delete sqliteService.db;
-      await sqliteService.onApplicationShutdown();
+      sqliteService.onApplicationShutdown();
       expect(closeMock).not.toHaveBeenCalled();
     });
   });

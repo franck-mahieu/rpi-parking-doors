@@ -71,7 +71,7 @@ describe('Relays.tsx', () => {
         .mockResolvedValueOnce(false);
       jest.useFakeTimers();
 
-      await relays.getRelayStateUntilRelayIsOff({
+      relays.getRelayStateUntilRelayIsOff({
         relayNumber: 0,
         setRelayState: setRelayStateMock,
         guid: 'guid',

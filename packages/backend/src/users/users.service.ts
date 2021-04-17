@@ -22,23 +22,23 @@ export class UsersService {
     if (request?.headers?.authorization) {
       credentials = auth(request);
     }
-    return await this.sqliteService.findRolesAndGuid({
+    return this.sqliteService.findRolesAndGuid({
       guid,
       login: credentials?.name,
     });
   }
 
   async getAllUsers(): Promise<Array<string>> {
-    return await this.sqliteService.findAllUsers();
+    return this.sqliteService.findAllUsers();
   }
 
   async removeUser(login): Promise<string> {
-    return await this.sqliteService.removeUser(login);
+    return this.sqliteService.removeUser(login);
   }
 
   async updateUserPassword(login, password): Promise<string> {
     const hashPassword = await bcrypt.hash(password, this.saltRounds);
-    return await this.sqliteService.updateUserPassword(login, hashPassword);
+    return this.sqliteService.updateUserPassword(login, hashPassword);
   }
 
   async addUser({
@@ -49,7 +49,7 @@ export class UsersService {
     expiration,
   }): Promise<string> {
     const hashPassword = await bcrypt.hash(password, this.saltRounds);
-    return await this.sqliteService.addUser({
+    return this.sqliteService.addUser({
       login,
       password: hashPassword,
       email,

@@ -34,16 +34,16 @@ export const Navbar = ({ setGuid, guid, setUserRoles, userRoles }: INavbar) => {
   React.useEffect(() => {
     if (!userRoles) {
       const fetchRoles = async () => {
-        const { roles, guid } = await fetchUtils(
+        const { roles, guid: fetchGuid } = await fetchUtils(
           `/api/users/rolesAndGuid?guid=${guidInPathParam}`,
           'GET',
         );
         setUserRoles(roles?.split(' '));
-        if (guid) {
-          setGuid(guid);
+        if (fetchGuid) {
+          setGuid(fetchGuid);
           history.push({
             pathname: window.location.pathname,
-            search: `?guid=${guid}`,
+            search: `?guid=${fetchGuid}`,
           });
         }
       };

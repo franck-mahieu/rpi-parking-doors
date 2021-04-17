@@ -59,7 +59,7 @@ describe('UpdatePasswordModal', () => {
       M.Modal.init = modalInitMock;
       const setStateMock = jest.fn();
       updatePasswordModal.setState = setStateMock;
-      await updatePasswordModal.componentDidMount();
+      updatePasswordModal.componentDidMount();
       expect(modalInitMock).toHaveBeenCalledWith(undefined, {
         onOpenStart: expect.any(Function),
         inDuration: 250,

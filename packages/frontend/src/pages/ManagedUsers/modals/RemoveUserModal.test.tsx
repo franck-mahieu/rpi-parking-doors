@@ -58,7 +58,7 @@ describe('RemoveUserModal', () => {
         options.onCloseEnd();
       });
       M.Modal.init = modalInitMock;
-      await removeUserModal.componentDidMount();
+      removeUserModal.componentDidMount();
       expect(modalInitMock).toHaveBeenCalledWith(undefined, {
         onCloseEnd: expect.any(Function),
         inDuration: 250,

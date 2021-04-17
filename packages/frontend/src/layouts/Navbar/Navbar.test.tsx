@@ -27,37 +27,15 @@ describe('Navbar.tsx', () => {
         component = renderer.create(
           <MemoryRouter>
             <Navbar
-              setGuid={() => {}}
+              setGuid={jest.fn()}
               guid={'guid'}
-              setUserRoles={() => {}}
+              setUserRoles={jest.fn()}
               userRoles={'admin'}
             />
           </MemoryRouter>,
         );
       });
       expect(utils.fetchUtils).not.toHaveBeenCalled();
-    });
-
-    it('should renders correctly when fetchUtils return correct roles and guid', async () => {
-      utils.fetchUtils.mockResolvedValue({
-        guid: 'guid',
-        roles: 'roles',
-      });
-      await act(async () => {
-        const history = createMemoryHistory();
-        history.push = jest.fn();
-        component = renderer.create(
-          <Router history={history}>
-            <Navbar
-              setGuid={() => {}}
-              guid={null}
-              setUserRoles={() => {}}
-              userRoles={null}
-            />
-          </Router>,
-        );
-      });
-      expect(component.toJSON()).toMatchSnapshot();
     });
 
     it('should renders correctly when fetchUtils return empty guid', async () => {
@@ -70,9 +48,9 @@ describe('Navbar.tsx', () => {
         component = renderer.create(
           <Router history={history}>
             <Navbar
-              setGuid={() => {}}
+              setGuid={jest.fn()}
               guid={null}
-              setUserRoles={() => {}}
+              setUserRoles={jest.fn()}
               userRoles={null}
             />
           </Router>,
@@ -92,9 +70,9 @@ describe('Navbar.tsx', () => {
         component = renderer.create(
           <Router history={history}>
             <Navbar
-              setGuid={() => {}}
+              setGuid={jest.fn()}
               guid={null}
-              setUserRoles={() => {}}
+              setUserRoles={jest.fn()}
               userRoles={null}
             />
           </Router>,

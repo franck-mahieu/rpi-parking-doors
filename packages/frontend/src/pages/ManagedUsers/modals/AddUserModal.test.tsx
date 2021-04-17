@@ -20,14 +20,14 @@ describe('AddUserModal', () => {
   describe('render', () => {
     it('renders correctly', () => {
       const tree = renderer
-        .create(<AddUserModal guid={'guid'} getUsers={() => {}} />)
+        .create(<AddUserModal guid={'guid'} getUsers={jest.fn()} />)
         .toJSON();
       expect(tree).toMatchSnapshot();
     });
 
     it('should call onClickAddUser on click on button', () => {
       const component = renderer.create(
-        <AddUserModal guid={'guid'} getUsers={() => {}} />,
+        <AddUserModal guid={'guid'} getUsers={jest.fn()} />,
       );
       const componentInstance: any = component.getInstance();
       jest.spyOn(componentInstance, 'onClickAddUser').mockResolvedValue('');
@@ -55,7 +55,7 @@ describe('AddUserModal', () => {
       M.Datepicker.init = datePickerInitMock;
       const setStateMock = jest.fn();
       addUserModal.setState = setStateMock;
-      await addUserModal.componentDidMount();
+      addUserModal.componentDidMount();
       expect(modalInitMock).toHaveBeenCalledWith(undefined, {
         onOpenStart: expect.any(Function),
         inDuration: 250,
@@ -85,7 +85,7 @@ describe('AddUserModal', () => {
       toastMock = jest.fn();
       M.toast = toastMock;
       const component = renderer.create(
-        <AddUserModal guid={'guid'} getUsers={() => {}} />,
+        <AddUserModal guid={'guid'} getUsers={jest.fn()} />,
       );
       componentInstance = component.getInstance();
       componentInstance.setState({

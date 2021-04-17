@@ -14,13 +14,13 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
 
   if ((process.env.NODE_ENV = 'development')) {
-    const config = new DocumentBuilder()
+    const swaggerConfig = new DocumentBuilder()
       .setTitle('rpi-parking-doors API')
       .setDescription('API of rpi-parking-doors webapp project')
       .setVersion('1.0')
       .addBasicAuth()
       .build();
-    const document = SwaggerModule.createDocument(app, config);
+    const document = SwaggerModule.createDocument(app, swaggerConfig);
     SwaggerModule.setup('swagger', app, document);
 
     app.enableCors({

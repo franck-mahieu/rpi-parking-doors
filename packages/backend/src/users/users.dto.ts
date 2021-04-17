@@ -22,7 +22,7 @@ export class RemoveUserDto {
   login: string;
 }
 
-export class getRolesAndGuidQueryDto {
+export class GetRolesAndGuidQueryDto {
   @ApiPropertyOptional({
     description: 'guid of the user to get. This information is optional',
     example: '7d991349-a5cc-4704-a860-8e62bc298d45',

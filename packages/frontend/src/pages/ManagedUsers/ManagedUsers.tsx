@@ -30,9 +30,12 @@ export const ManagedUsers = ({ guid }: IManagedUsers) => {
 
   const getUsers = useCallback(async () => {
     if (guid) {
-      const users = await fetchUtils(`/api/users/all?guid=${guid}`, 'GET');
-      setUsers(users);
-    }
+                const fetchUsers = await fetchUtils(
+                  `/api/users/all?guid=${guid}`,
+                  'GET',
+                );
+                setUsers(fetchUsers);
+              }
   }, [guid]);
 
   useEffect(() => {

@@ -18,7 +18,7 @@ import { Roles } from '../auth/roles.decorator';
 import { SqliteDatabaseReturnDto } from '../common/databases/sqlite/sqlite.dto';
 import {
   AddUserDto,
-  getRolesAndGuidQueryDto,
+  GetRolesAndGuidQueryDto,
   RemoveUserDto,
   UpdateUserPasswordDto,
 } from './users.dto';
@@ -43,9 +43,9 @@ export class UsersController {
   @Get('rolesAndGuid')
   async getRolesAndGuid(
     @Req() request,
-    @Query('guid') guid: getRolesAndGuidQueryDto,
+    @Query('guid') guid: GetRolesAndGuidQueryDto,
   ): Promise<IRolesAndGuid> {
-    return await this.usersService.getRolesAndGuid(request, guid);
+    return this.usersService.getRolesAndGuid(request, guid);
   }
 
   @ApiOperation({
@@ -60,7 +60,7 @@ export class UsersController {
   @Roles('admin')
   @Get('all')
   async getAllUsers(): Promise<Array<string>> {
-    return await this.usersService.getAllUsers();
+    return this.usersService.getAllUsers();
   }
 
   @ApiOperation({
@@ -75,7 +75,7 @@ export class UsersController {
   @Roles('admin')
   @Delete('remove')
   async removeUser(@Body() body: RemoveUserDto): Promise<string> {
-    return await this.usersService.removeUser(body?.login);
+    return this.usersService.removeUser(body?.login);
   }
 
   @ApiOperation({
@@ -92,10 +92,7 @@ export class UsersController {
   async updateUserPassword(
     @Body() body: UpdateUserPasswordDto,
   ): Promise<string> {
-    return await this.usersService.updateUserPassword(
-      body?.login,
-      body?.password,
-    );
+    return this.usersService.updateUserPassword(body?.login, body?.password);
   }
 
   @ApiOperation({
@@ -110,7 +107,7 @@ export class UsersController {
   @Roles('admin')
   @Put('add')
   async addUser(@Body() body: AddUserDto): Promise<string> {
-    return await this.usersService.addUser({
+    return this.usersService.addUser({
       login: body?.login,
       password: body?.password,
       roles: body?.roles,
