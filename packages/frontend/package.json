@@ -11,7 +11,7 @@
   "scripts": {
     "start:dev": "react-scripts start",
     "build": "react-scripts build && npm run move-frontend-build-in-backend-dist",
-    "move-frontend-build-in-backend-dist": "copyfiles \"./build/**/*\"  ../backend/dist/frontend/",
+    "move-frontend-build-in-backend-dist": "copyfiles \"./build/**/*\"  ../backend/dist/packages/frontend/",
     "test": "react-scripts test --watchAll=false",
     "test:watch": "react-scripts test",
     "test:cov": "react-scripts test --watchAll=false --coverage",

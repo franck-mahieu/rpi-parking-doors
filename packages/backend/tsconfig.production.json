@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "./dist/backend/src"
+    "outDir": "./dist/packages/backend/src"
   },
   "exclude": [
     "node_modules",
