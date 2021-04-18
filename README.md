@@ -59,7 +59,7 @@ Now, you have in `packages/backend/dist` folder the frontend and backend optimiz
 - In Raspberry terminal, in `dist` folder, launch this command to install only production dependencies :
 
 ```
-npm install --only=production
+npm ci --only=production
 ```
 
 - Start the application with this command in `dist` folder
