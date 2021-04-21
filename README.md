@@ -4,10 +4,10 @@ RPI Parking Doors is a project developed to open the door/s of a car park (colle
 via a web application.
 
 The project also includes a user management page, with the possibility to add (with expiration, or not), delete a user,
-and modify his password
+and modify his password.
 
 The operation is simple, when a user presses the "open door" button, a relay is activated for 10 seconds, which
-simulates a press on your gate emitter, and therefore opens it.
+simulates a press on your gate emitter and therefore opens it.
 
 A token is generated for each user at his creation, and set automatically in url (call `guid` in query param) to stay
 indefinitely connected
@@ -17,11 +17,11 @@ case. The next step will be to implement Oauth.
 # How it works
 
 Connect you raspberry and your relays board like
-describe [here](https://myhydropi.com/connecting-a-relay-board-to-a-raspberry-pi).
+describing [here](https://myhydropi.com/connecting-a-relay-board-to-a-raspberry-pi).
 
 The relay must be connected to a raspberry pi, by default on pins 20 and 21.
 
-If you only have one gate, you can block the button on the transmitter of your gate, and simply replace the battery with
+If you only have one gate, you can block the button on the transmitter of your gate and simply replace the battery with
 a 5v power supply (which you would have fixed in place of the battery), which will power the transmitter only when the
 relay is in the closed position. If not, the relay will be in the open position the rest of the time, so your
 transmitter will no longer be powered.
@@ -44,7 +44,7 @@ button is just a switch, we can reproduce it by connecting a relay on both sides
 
 - Clone this repository on your desktop
 - Edit the `.env` files to customize your configuration (relays, port, label, title) if needed
-- Launch this commands to install dependencies and build the application :
+- Launch these commands to install dependencies and build the application :
 
 ```
 npm install && npm run build
@@ -55,7 +55,7 @@ Now, you have in `packages/backend/dist` folder the frontend and backend optimiz
 ## Install and launch application on Raspberry
 
 - On the Raspberry, install NodeJS 12 or higher
-- Copy generate `dist` folder on your Raspberry
+- Copy generates `dist` folder on your Raspberry
 - In Raspberry terminal, in `dist` folder, launch this command to install only production dependencies :
 
 ```
@@ -72,10 +72,10 @@ So now, your application is started.
 
 Note :
 
-- I advise you to move the sqlite.sb database in ramdisk (like describe [here](#set-database-in-memory)), to save your
+- I advise you to move the sqlite.sb database in ramdisk (like describing [here](#set-database-in-memory)), to save your
   sd card
 - I advise you to launch the application as systemd service like
-  describe [here](#launch-the-application-as-systemd-service)
+  describing [here](#launch-the-application-as-systemd-service)
 
 Note 2 : Good to know, the frontend files are served by the backend application
 
@@ -151,8 +151,8 @@ npm run test:e2e
 
 ## HTTPS
 
-I advise you to expose the application via HTTPS, I personally used nginx with a let's encrypt certificate, as described
-here [certbot](https://certbot.eff.org/lets-encrypt/debianbuster-nginx).
+I advise you to expose the application via HTTPS, I personally used nginx with a let's encrypt certificate, as
+describing here [certbot](https://certbot.eff.org/lets-encrypt/debianbuster-nginx).
 
 My IP is not static, so I use the free [no-ip](https://www.noip.com/) service (which needs to be renewed every month, to
 prove that the domain is still in use), which I have configured with my router to give me a static domain for my not
@@ -187,7 +187,7 @@ To achieve that, we should :
 ## Launch the application as systemd service
 
 I advise you to create a [systemd](https://wiki.debian.org/systemd) service for your application and launch it with
-systemctl, like describe
+systemctl, like describing
 [here](https://www.shubhamdipt.com/blog/how-to-create-a-systemd-service-in-linux/), to automatically restart the
 application if an error or crash occurred
 
@@ -211,7 +211,7 @@ WantedBy=multi-user.target
 
 ## Set your log in memory
 
-I advice you to use [log2ram](https://github.com/azlux/log2ram) to preserve your SD card.
+I advise you to use [log2ram](https://github.com/azlux/log2ram) to preserve your SD card.
 
 # Possible improvements
 
@@ -220,5 +220,4 @@ I advice you to use [log2ram](https://github.com/azlux/log2ram) to preserve your
 
 # Support
 
-- I'm Franck Mahieu, available on [Twitter](https://twitter.com/Franck_Mahieu) or
-  by [email](mailto:franck.mahieu59@gmail.com)
+- I'm Franck Mahieu, available on [Twitter](https://twitter.com/Franck_Mahieu) or by [email](mailto:franck.mahieu59@gmail.com)
