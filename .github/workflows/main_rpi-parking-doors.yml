@@ -1,0 +1,36 @@
+# Docs for the Azure Web Apps Deploy action: https://go.microsoft.com/fwlink/?linkid=2134798
+# More GitHub Actions for Azure: https://go.microsoft.com/fwlink/?linkid=2135048
+
+name: Azure App Service - rpi-parking-doors(Production), Build and deploy NodeJS app
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Checkout Github Action"
+        uses: actions/checkout@master
+
+      - name: Set up Node.js version
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.x"
+
+      - name: npm install, build, and test
+        run: |
+          npm install
+          npm run build
+          npm run test:cov
+
+      - name: Run Azure webapp deploy action using publish profile credentials
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: rpi-parking-doors
+          slot-name: Production
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A2542BAAB6C048BDA3D5F3B29E2BEA24 }}
+          package: ./packages/backend/dist/
